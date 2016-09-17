@@ -1,5 +1,5 @@
 <html>
-	<link rel="stylesheet" type="text/css" href="vendor.css" />
+	<link rel="stylesheet" type="text/css" href="format.css" />
 	<head>
 		<title>Admin Portal</title>
 	</head>

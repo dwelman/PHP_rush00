@@ -1,5 +1,5 @@
 <html>
-	<link rel="stylesheet" type="text/css" href="vendor.css" />
+	<link rel="stylesheet" type="text/css" href="format.css" />
 	<head>
 		<title>Vendor</title>
 	</head>
@@ -34,6 +34,7 @@
 			foreach ($categories as $cat)
 			{
 				echo '<form action="load_prod.php" name="load_prod.php" method="post">';
+				echo '<type="hidden" name="id" value="' . $cat["id"] . '"/>';
 				echo '<input type="submit" name="category" value="' . strtoupper($cat["name"]) . '"/>';
 				echo "</form>";
 			}

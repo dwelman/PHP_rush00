@@ -1,0 +1,35 @@
+a
+{
+	text-decoration: none;
+	color:green;
+}
+
+a:link
+{
+	color: green;
+}
+
+a:visitied
+{
+	color: darkgreen;
+}
+
+a:hover
+{
+	background: gainsboro;
+}
+
+body
+{
+	background-color: #34282C;
+	color: chartreuse;
+	font-family: Courier New, Courier, monospace;
+}
+
+#header
+{
+	position: absolute;
+	color: #E5E4E2;
+	width: 100vh;
+	height: 12vh;
+}
