@@ -1,0 +1,14 @@
+body
+{
+	/*background-color: #34282C;
+	color: #E5E4E2;*/
+	font-family: Courier New, Courier, monospace;
+}
+
+#header
+{
+	position: absolute;
+	color: #E5E4E2;
+	width: 100vh;
+	height: 12vh;
+}
