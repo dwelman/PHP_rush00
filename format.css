@@ -1,3 +1,9 @@
+*
+{
+	color: chartreuse;
+	font-family: monospace, Lucida Console;
+}
+
 a
 {
 	text-decoration: none;
@@ -11,7 +17,7 @@ a:link
 
 a:visitied
 {
-	color: darkgreen;
+	color: green;
 }
 
 a:hover
@@ -19,17 +25,177 @@ a:hover
 	background: gainsboro;
 }
 
-body
+html, body
 {
-	background-color: #34282C;
-	color: chartreuse;
-	font-family: Courier New, Courier, monospace;
+	max-width: 100%;
+	overflow-x: hidden;
+	background-image: url('http://i.imgur.com/b6yfmnE.png');
+	background-size: 100% 100%;
+	font-size: 14px;
+	margin: 0 auto;
+}
+
+iframe
+{
+	border: none;
+}
+
+form
+{
+	padding: 0px 0px 0px 0px;
+	margin: 0px;
+}
+
+input
+{
+	border: none;
+	background-color: transparent;
+	color: green;
+	font-size: 14px;
+}
+
+input[type=submit]
+{
+	background-color: gainsboro;
+	border: none;
+	border-width: 0px;
+	color: green;
+	cursor: pointer;
+	margin: 0px;
+	height: 2em;
+	font-size: 14px;
+}
+
+input:hover[type=submit]
+{
+	background-color: black;
+	color: gainsboro;
+	margin: 0px;
+	border: none;
+	border-width: 0px;
+	height: 2em;
+	cursor: pointer;
+}
+
+input:hover
+{
+	background: gainsboro;
+}
+
+input:focus
+{
+	outline-color: chartreuse;
+	background-color: gainsboro;
+}
+
+#frames
+{
+	height: 70%;
+}
+
+#frames2
+{
+	height: 80%;
+}
+
+.column1 
+{
+	width: 15%;
+	float: left;
+	margin: 0%;
+	background-image: url('http://i.imgur.com/b6yfmnE.png');
+	background-size: 100% 100%;
+	
+}
+
+.column3
+{
+	width: 40%;
+	float: left;
+	margin: 0%;
+	background-image: url('http://i.imgur.com/b6yfmnE.png');
+	background-size: 100% 100%;
+	font-size: 12px;
+	
+}
+
+.column4 
+{
+	width: 60%;
+	float: right;
+	margin: 0%;
+	background-image: url('http://i.imgur.com/b6yfmnE.png');
+	background-size: 100% 100%;
+	font-size: 12px;
+}
+
+textarea
+{
+	background-color: gainsboro;
+	color: green;
+}
+
+.feature
+{
+	width: 85%;
+	float: right;
+	margin: 0%;
+	background-image: url('http://i.imgur.com/b6yfmnE.png');
+	background-size: 100% 100%;
+}
+
+#header_box
+{
+	width: 20%;
+	height: 10%;
+	float: left;
+	left: 0px;
+	bottom: 0px;
+	text-align: center;
+}
+
+#footer 
+{
+	background-color: grey;
+	background-size: 100% 100%;
+	width: 100%;
+	color: green;
 }
 
 #header
 {
-	position: absolute;
-	color: #E5E4E2;
-	width: 100vh;
-	height: 12vh;
+	background-image: url('http://i.imgur.com/b6yfmnE.png');
+	background-size: 100% 100%;
+	height: 20%;
+}
+
+#header_2
+{
+	background-image: url('http://i.imgur.com/b6yfmnE.png');
+	background-size: 100% 100%;
+	height: 10%;
+}
+
+#main_frame
+{
+	width: 100%;
+	height: 100%;
+}
+
+#cat_frame
+{
+	width: 100%;
+	height: 100%;
+}
+
+#admin_frame_1
+{
+	width: 100%;
+	height: 100%;
+}
+
+#admin_frame_2
+{
+	width: 100%;
+	height: 100%;
 }

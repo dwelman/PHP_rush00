@@ -19,7 +19,6 @@
 		{
 			if ($field["id"] === $id)
 			{
-				unset($categories[$key]);
 				foreach ($products as $a_key => $a_field)
 				{
 					for ($i = 0; $i < count($categories); $i++)
@@ -32,9 +31,10 @@
 					$products = array_values($products);
 					file_put_contents("data/products", serialize($products));
 				}
+				unset($categories[$key]);
 				file_put_contents($path, serialize($categories));
 				echo "OK\n";
-				header("Location:admin.php?error=0");
+				header("Location:admin_cat.php?error=0");
 				return ;
 			}
 		}
@@ -48,7 +48,7 @@
 				$categories[$key]["name"] = $to_change;
 				file_put_contents($path, serialize($categories));
 				echo "OK\n";
-				header("Location:admin.php?error=0");
+				header("Location:admin_cat.php?error=0");
 				return ;
 			}
 		}
@@ -56,6 +56,6 @@
 	else
 	{
 		echo "ERROR:BLANK_FIELD\n";
-		header("Location:admin.php?error=4");
+		header("Location:admin_cat.php?error=4");
 	}
 ?>

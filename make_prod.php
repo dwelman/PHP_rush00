@@ -16,13 +16,13 @@
 		$products[] = array("id" => uniqid("PR-"), "name" => $name, "desc" => $desc, "price" => $price, "categories" => array($categories[0]["id"]));
 		file_put_contents("data/products", serialize($products));
 		echo "OK\n";
-		header("Location:admin.php?error=0");
+		header("Location:admin_prod.php?error=0");
 		return ;
 	}
 	else
 	{
 		echo "ERROR:EMPTY_FIELD\n";
-		header("Location:admin.php?error=5");
+		header("Location:admin_prod.php?error=5");
 		return ;
 	}
 ?>

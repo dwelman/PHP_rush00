@@ -18,14 +18,20 @@
 		file_put_contents($admins_path, serialize($admins));
 		file_put_contents($users_path, null);
 		$categories[] = array("id" => trim(uniqid("CAT-")), "name" => "All");
-		$categories[] = array("id" => trim(uniqid("CAT-")), "name" => "Food");
-		$categories[] = array("id" => trim(uniqid("CAT-")), "name" => "Furniture");
-		$categories[] = array("id" => trim(uniqid("CAT-")), "name" => "Electronics");
+		$categories[] = array("id" => trim(uniqid("CAT-")), "name" => "Malware");
+		$categories[] = array("id" => trim(uniqid("CAT-")), "name" => "Botnets");
+		$categories[] = array("id" => trim(uniqid("CAT-")), "name" => "Trojans");
 		file_put_contents($categories_path, serialize($categories));
-		$cat = array($categories[0]["id"]);
-		$products[] = array("id" => trim(uniqid("PR-")), "name" => "Test", "desc" => "This is a test item", "price" => "14.99", "categories" => $cat);
-		$cat = array($categories[0]["id"], $categories[1]["id"], $categories[2]["id"]);
-		$products[] = array("id" => trim(uniqid("PR-")), "name" => "Test2", "desc" => "This is a test item", "price" => "14.99", "categories" => $cat);
+		$cat = array($categories[0]["id"], $categories[1]["id"]);
+		$products[] = array("id" => trim(uniqid("PR-")), "name" => "Spammer", "desc" => "A basic spammer bot", "price" => "2.49", "categories" => $cat);
+		$cat = array($categories[0]["id"], $categories[1]["id"]);
+		$products[] = array("id" => trim(uniqid("PR-")), "name" => "Virus Template", "desc" => "A basic virus template", "price" => "10.42", "categories" => $cat);
+		$cat = array($categories[0]["id"], $categories[1]["id"], $categories[3]["id"]);
+		$products[] = array("id" => trim(uniqid("PR-")), "name" => "Basic Trojan", "desc" => "A basic trojan package to deploy malware of your choice", "price" => "15.99", "categories" => $cat);
+		$cat = array($categories[0]["id"], $categories[1]["id"]);
+		$products[] = array("id" => trim(uniqid("PR-")), "name" => "Worm", "desc" => "A basic worm for creating a backdoor", "price" => "16.49", "categories" => $cat);
+		$cat = array($categories[0]["id"], $categories[3]["id"]);
+		$products[] = array("id" => trim(uniqid("PR-")), "name" => "Rent a botnet", "desc" => "Rent a botnet for the day", "price" => "10.72", "categories" => $cat);
 		file_put_contents($products_path, serialize($products));
 		file_put_contents($orders_path, null);
 	}

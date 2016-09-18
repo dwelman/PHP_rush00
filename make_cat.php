@@ -13,13 +13,13 @@
 		$categories[] = array("id" => uniqid("CAT-"), "name" => $name);
 		file_put_contents("data/categories", serialize($categories));
 		echo "OK\n";
-		header("Location:admin.php?error=0");
+		header("Location:admin_cat.php?error=0");
 		return ;
 	}
 	else
 	{
 		echo "ERROR:EMPTY_FIELD\n";
-		header("Location:admin.php?error=4");
+		header("Location:admin_cat.php?error=4");
 		return ;
 	}
 ?>

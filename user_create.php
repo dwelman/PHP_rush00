@@ -1,7 +1,10 @@
 <html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" type="text/css" href="format.css" />
 	<head>
-		<title>Delete Account</title>
+		<title>CREATE_ACCOUNT</title>
 	</head>
 	<?php
 		if ($_GET["error"] === "1")
@@ -11,9 +14,9 @@
 	?>
 	<body>
 		<form action="create.php" name="create.php" method="post">
-			Username: <input type="input" name="login" value="" />
+			USERNAME ><input type="input" name="login" value="" />
 			<br />
-			Password: <input type="password" name="passwd" value = "" />
+			PASSWORD ><input type="password" name="passwd" value = "" />
 			<?php
 				session_start();
 				if ($_SESSION["is_admin"] == true)
@@ -23,7 +26,6 @@
 			?>
 			<input type="submit" name="submit" value="OK" />
 		</form>
-		<br />
-		<a href="index.php?error=0">Back to Home Page</a>
+		<a href="index.php?error=0"><i style="padding:5px" class="material-icons">home</i></a>
 	</body>
 </html>

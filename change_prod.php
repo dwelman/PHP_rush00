@@ -28,7 +28,7 @@
 				unset($products[$key]);
 				file_put_contents($path, serialize($products));
 				echo "OK\n";
-				header("Location:admin.php?error=0");
+				header("Location:admin_prod.php?error=0");
 				return ;
 			}
 		}
@@ -44,7 +44,7 @@
 				$products[$key]["price"] = $price;
 				file_put_contents($path, serialize($products));
 				echo "OK\n";
-				header("Location:admin.php?error=0");
+				header("Location:admin_prod.php?error=0");
 				return ;
 			}
 		}
@@ -54,7 +54,7 @@
 		if ($rm_id === $_SESSION["all_id"])
 		{
 			echo "ERROR:CANNOT_REMOVE_FROM_ALL\n";
-			header("Location:admin.php?error=8");
+			header("Location:admin_prod.php?error=8");
 			return ;
 		}
 		foreach ($products as $key => $field)
@@ -70,7 +70,7 @@
 				}
 				file_put_contents($path, serialize($products));
 				echo "OK\n";
-				header("Location:admin.php?error=0");
+				header("Location:admin_prod.php?error=0");
 				return ;
 			}
 		}
@@ -86,7 +86,7 @@
 		if ($valid == false)
 		{
 			echo "ERROR:INVALID_CATEGORY\n";
-			header("Location:admin.php?error=7");
+			header("Location:admin_prod.php?error=7");
 			return ;
 		}
 		foreach ($products as $key => $field)
@@ -98,14 +98,14 @@
 					if ($field["categories"][$i] === $add_id)
 					{
 						echo "ERROR:DUPLICATE_ID\n";
-						header("Location:admin.php?error=6");
+						header("Location:admin_prod.php?error=6");
 						return ;
 					}
 				}
 				$products[$key]["categories"][] = $add_id;
 				file_put_contents($path, serialize($products));
 				echo "OK\n";
-				header("Location:admin.php?error=0");
+				header("Location:admin_prod.php?error=0");
 				return ;
 			}
 		}
@@ -113,6 +113,6 @@
 	else
 	{
 		echo "ERROR:BLANK_FIELD\n";
-		header("Location:admin.php?error=5");
+		header("Location:admin_prod.php?error=5");
 	}
 ?>

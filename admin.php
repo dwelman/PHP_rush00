@@ -1,109 +1,63 @@
 <html>
 	<link rel="stylesheet" type="text/css" href="format.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<head>
-		<title>Admin Portal</title>
+		<title>ADMIN_PORTAL</title>
 	</head>
-	<?php
-		session_start();
-		echo '<p>Welcome to the admin page ' . $_SESSION["logged_on_user"] . '</p>';
-		echo '<hr>';
-		include("get_categories.php");
-		if ($_GET["error"] === "1")
-			echo "<p><b>Error: Cannot delete currently logged in user</b></p><br />";
-		else if ($_GET["error"] === "2")
-			echo "<p><b>Error: Username cannot be blank</b></p><br />";
-		else if ($_GET["error"] === "3")
-			echo "<p><b>Error: User not found</b></p><br />";
-		else if ($_GET["error"] === "4")
-			echo "<p><b>Error: New name cannot be blank</b></p><br />";
-		else if ($_GET["error"] === "5")
-			echo "<p><b>Error: Fields cannot be blank</b></p><br />";
-		else if ($_GET["error"] === "6")
-			echo "<p><b>Error: Duplicate Categories</b></p><br />";
-		else if ($_GET["error"] === "7")
-			echo "<p><b>Error: Category does not exist</b></p><br />";
-		else if ($_GET["error"] === "8")
-			echo "<p><b>Error: Cannot remove item from category \"All\"</b></p><br />";
-	?>
 	<body>
-		<p>Delete a user</p>
-		<form action="del_user.php" name="del_user.php" method="post">
-			Username: <input type="input" name="to_del" value="" />
+		<div id="header_2">
+			<?php
+				session_start();
+				echo '<p>WELCOME_ADMIN ' . $_SESSION["logged_on_user"] . '</p>';
+				include("get_categories.php");
+				if ($_GET["error"] === "1")
+					echo "<p><b>Error: Cannot delete currently logged in user</b></p><br />";
+				else if ($_GET["error"] === "2")
+					echo "<p><b>Error: Username cannot be blank</b></p><br />";
+				else if ($_GET["error"] === "3")
+					echo "<p><b>Error: User not found</b></p><br />";
+				else if ($_GET["error"] === "4")
+					echo "<p><b>Error: New name cannot be blank</b></p><br />";
+				else if ($_GET["error"] === "5")
+					echo "<p><b>Error: Fields cannot be blank</b></p><br />";
+				else if ($_GET["error"] === "6")
+					echo "<p><b>Error: Duplicate Categories</b></p><br />";
+				else if ($_GET["error"] === "7")
+					echo "<p><b>Error: Category does not exist</b></p><br />";
+				else if ($_GET["error"] === "8")
+					echo "<p><b>Error: Cannot remove item from category \"All\"</b></p><br />";
+			?>
+			<div id="header_box">
+				<a href="admin_cat.php" target="admin_frame_1">CATEGORIES</a>
+			</div>
+			<div id="header_box">
+				<a href="admin_prod.php" target="admin_frame_2">PRODUCTS</a>
+			</div>
+			<div id="header_box">
+				<a href="show_orders.php" target="admin_frame_2">ORDERS</a>
+			</div>
+			<div id="header_box">
+				<a href="index.php?error=0"><i style="padding:5px" class="material-icons">home</i></a>
+			</div>
+		</div>
+		<div>
+			<form action="del_user.php" name="del_user.php" method="post">
+			DELETE_A_USER ><input type="input" name="to_del" value="" />
 			<input type="submit" name="submit" value="OK" />
 		</form>
-		<hr>
-		<p>Categories</p>
-		<p>Make a new category</p>
-			<form action="make_cat.php" name="make_cat.php" method="post">
-				Name: <input type="input" name="name" value=""/>
-				<input type="submit" name="submit" value="OK"/>
-			</form>
-		<?php
-			if (($categories = get_categories()) == false)
-			{
-				echo "ERROR:FILE_NOT_EXISTS\n";
-				header("Location:index.php?error=1");
-				return ;
-			}
-			foreach ($categories as $cat)
-			{
-				echo '<form action="change_cat.php" name="change_cat.php" method="post">';
-				echo 'ID: <input type="input" name="id" value="' . $cat["id"] . '"readonly/>';
-				if ($cat["name"] === "All")
-				{
-					$_SESSION["all_id"] = $cat["id"];
-					echo 'Category: <input type="input" name="to_change" value="' . $cat["name"] . '"readonly/>'; 
-				}
-				else
-				{
-					echo 'Category: <input type="input" name="to_change" value="' . $cat["name"] . '"/>';
-					echo '<input type="submit" name="mode" value="MOD"/>';
-					echo '<input type="submit" name="mode" value="DEL"/>';
-				}
-				echo '</form>';
-			}
-		?>
-		<hr>
-		<p>Products</p>
-		<p>Add a product</p>
-		<?php
-			include("get_products.php");
-			echo '<form action="make_prod.php" name="make_prod.php" method="post">';
-			echo 'Name: <input type="input" name="name" value=""/>';
-			echo 'Description: <input type="input" name="desc" value=""/>';
-			echo 'Price: <input type="number" name="price" step="any" value=""/>';
-			echo '<input type="submit" name="submit" value="OK"/>';
-			echo '</form>';
-			if (($products = get_products()) === false)
-			{
-				echo "ERROR:FILE_NOT_EXISTS\n";
-				header("Location:index.php?error=1");
-				return ;
-			}
-			foreach ($products as $prod)
-			{
-				echo '<form action="change_prod.php" name="change_prod.php" method="post">';
-				echo 'ID: <input type="input" name="id" value="' . $prod["id"] . '"readonly/>'; 
-				echo 'Name: <input type="input" name="name" value="' . $prod["name"] . '"/>';
-				echo 'Description: <input type="input" name="desc" value="' . $prod["desc"] . '"/>';
-				echo 'Price: <input type="number" name="price" step="any" value="' . $prod["price"] . '"/>';
-				echo 'Categories: <select name="categories">';
-				foreach ($prod["categories"] as $cat)
-				{
-					echo '<option value="' . $cat . '">' . $cat . "</option>";
-				}
-				echo '</select>';
-				echo '<input type="submit" name="mode" value="MOD"/>';
-				echo '<input type="submit" name="mode" value="DEL"/>';
-				echo '<br />';
-				echo 'Remove Category: <input type="input" name="remove" value=""/>';
-				echo '<input type="submit" name="mode" value="RMV"/>';
-				echo 'Add Category: <input type="input" name="add" value=""/>';
-				echo '<input type="submit" name="mode" value="ADD"/>';
-				echo '</form>';
-			}
-		?>
-		<br />
-		<a href="index.php?error=0">Back to Home Page</a>
+		</div>
+		<div id="frames2">
+			<div class="column3">
+				<iframe name="admin_frame_1" id="admin_frame_1" src="admin_cat.php"></iframe>
+			</div>
+			<div class="column4">
+				<iframe name="admin_frame_2" id="admin_frame_2" src="admin_prod.php"></iframe>
+			</div>
+		</div>
+		<div id="footer">
+			<p>BACK_END BY: DAVID_WELMAN || FRONT_END: THULASIZWE_MAVUSO || &copy2016 DAVIWEL & THUMAVU</p>
+		</div>
 	</body>
 </html>
